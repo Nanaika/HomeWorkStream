@@ -6,6 +6,12 @@ import java.io.IOException;
 
 public class FileParser {
 
+    private String path = "";
+
+
+    public FileParser(String path) {
+        this.path = path;
+    }
 
     private String[] createStringArray() {
 
@@ -67,10 +73,12 @@ public class FileParser {
 
     private String readFile() {
 
+        String path = this.path;
+
         String temp = "";
 
         try {
-            FileInputStream fin = new FileInputStream("Andromeda.data");
+            FileInputStream fin = new FileInputStream(path);
             int sym;
             do {
                 sym = fin.read();

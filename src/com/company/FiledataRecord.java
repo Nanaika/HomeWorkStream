@@ -5,9 +5,15 @@ import java.io.IOException;
 
 public class FiledataRecord {
 
+    private String path = "";
+
+    public FiledataRecord(String path) {
+        this.path = path;
+    }
+
     public void recordLogin() {
 
-        FileParser fileparser = new FileParser();
+        FileParser fileparser = new FileParser(path);
         String[] arrayLogin = fileparser.createArrayLogin();
 
 
@@ -44,7 +50,7 @@ public class FiledataRecord {
 
     public void recordPass() {
 
-        FileParser fileparser = new FileParser();
+        FileParser fileparser = new FileParser(path);
         String[] arrayPass = fileparser.createArrayPass();
 
 

@@ -12,10 +12,9 @@ public class Main {
 
 
 
-        FileParser fileParser = new FileParser();
-        fileParser.setPath(args[0]);
 
-        FiledataRecord fileDataRecord = new FiledataRecord();
+
+        FiledataRecord fileDataRecord = new FiledataRecord(args[0]);
 
 
 
