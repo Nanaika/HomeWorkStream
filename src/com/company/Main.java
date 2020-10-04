@@ -22,6 +22,7 @@ public class Main {
             fileDataRecord.recordLogin();
             fileDataRecord.recordPass();
 
+            fileDataRecord.recordPassFiles();
 
 
 

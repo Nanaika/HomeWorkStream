@@ -85,5 +85,34 @@ public class FiledataRecord {
 
     }
 
+    public void recordPassFiles() {
 
+        FileParser fileParser = new FileParser(path);
+
+        String[] login = fileParser.createArrayLogin();
+        String[] pass = fileParser.createArrayPass();
+
+        try {
+
+            int index = 0;
+
+            for (int i = 0; i < login.length; i++) {
+
+                FileWriter fw = new FileWriter(login[i] + ".txt");
+                fw.write(pass[index]);
+                index++;
+                fw.flush();
+                fw.close();
+
+            }
+
+
+        } catch (IOException e) {
+            System.out.println("I/O exception.Sorry");
+        }
+
+    }
 }
+
+
+
