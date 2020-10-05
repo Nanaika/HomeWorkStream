@@ -24,7 +24,8 @@ public class Main {
 
             fileDataRecord.recordPassFiles();
 
-
+        DirParser dirParser = new DirParser("C:\\Users\\Nanaec\\IdeaProjects\\HOMEWORKS",".txt");
+        dirParser.printFiles();
 
     }
 
