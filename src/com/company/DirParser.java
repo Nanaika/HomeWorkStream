@@ -4,11 +4,25 @@ import java.io.*;
 
 public class DirParser {
 
-    private String extension = "";
-    private String path = "";
+    private String extension;
+    private String path;
 
     DirParser(String path, String extension) {
         this.path = path;
+        this.extension = extension;
+    }
+
+    public void setNewDir(String path) {
+        this.path = path;
+
+    }
+
+    public String getCurrentDir() {
+        return this.path;
+
+    }
+
+    public void setFilter(String extension) {
         this.extension = extension;
     }
 
@@ -18,10 +32,9 @@ public class DirParser {
 
         File file = new File(path);
         FilenameFilter ff = new FileType(extension);
-        String[] arrayFiles = file.list(ff);
+        return file.list(ff);
 
 
-        return arrayFiles;
     }
 
 
@@ -50,7 +63,7 @@ public class DirParser {
                     if (pass.length() > 5) {
                         System.out.println(arrayFiles[i]);
                         pass = "";
-                    }else{
+                    } else {
                         continue;
                     }
 

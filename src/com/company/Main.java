@@ -1,8 +1,5 @@
 package com.company;
 
-import java.io.*;
-import java.nio.channels.FileChannel;
-import java.util.Arrays;
 
 public class Main {
 
@@ -24,9 +21,14 @@ public class Main {
 
             fileDataRecord.recordPassFiles();
 
-        DirParser dirParser = new DirParser("C:\\Users\\Nanaec\\IdeaProjects\\HOMEWORKS",".txt");
+        DirParser dirParser = new DirParser(args[1],".txt");
         dirParser.printFiles();
-
+//        System.out.println(dirParser.getCurrentDir());
+//        dirParser.setNewDir("C:\\AMD\\");
+//        System.out.println(dirParser.getCurrentDir());
+//        dirParser.setNewDir(args[1]);
+//        dirParser.setFilter(".jpg");
+//        dirParser.printFiles();
     }
 
 
