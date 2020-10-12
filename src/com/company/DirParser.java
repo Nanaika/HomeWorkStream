@@ -29,52 +29,70 @@ public class DirParser {
 
     public String[] sortFiles() {
 
-
         File file = new File(path);
         FilenameFilter ff = new FileType(extension);
         return file.list(ff);
-
 
     }
 
 
     public void printFiles() {
+        File dir = new File(this.path);
+        String[] files = dir.list();
 
-        String[] arrayFiles = sortFiles();
-        String pass = "";
+        for (String file : files) {
+            System.out.println(file);
+        }
+    }
 
-        for (int i = 0; i < arrayFiles.length; i++) {
+    public void printParsedTxtFiles() {
+
+        if (this.extension != ".txt") {
+            System.out.println("Sorry!" +
+                    "Can parse only txt files!" +
+                    "Set extension to txt!");
+
+        } else {
+
+            String[] tempArray = sortFiles();
+            String pass = "";
+
+            for (int i = 0; i < tempArray.length; i++) {
+
+                if (tempArray[i].startsWith("logins") ||
+                        tempArray[i].startsWith("Pass")) {
+                    continue;
+                } else {
+
+                    try {
+                        FileReader fr = new FileReader(tempArray[i]);
+                        int sym = 0;
+                        while (sym != -1) {
+                            sym = fr.read();
+                            pass += (char) sym;
+
+                        }
+                        fr.close();
+                        if (pass.length() > 5) {
+                            System.out.println(tempArray[i]);
+                            pass = "";
+                        } else {
+                            continue;
+                        }
 
 
-            if (arrayFiles[i].startsWith("logins") ||
-                    arrayFiles[i].startsWith("Pass")) {
-                continue;
-            } else {
-
-                try {
-                    FileReader fr = new FileReader(arrayFiles[i]);
-                    int sym = 0;
-                    while (sym != -1) {
-                        sym = fr.read();
-                        pass += (char) sym;
-
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Sorry file not found.");
+                        System.out.println("Check file directory.");
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        System.out.println("I/O exception.Sorry!");
                     }
-                    fr.close();
-                    if (pass.length() > 5) {
-                        System.out.println(arrayFiles[i]);
-                        pass = "";
-                    } else {
-                        continue;
-                    }
-
-                } catch (FileNotFoundException e) {
-                    System.out.println("Sorry file not found.");
-                    System.out.println("Check file directory.");
-
-                } catch (IOException e) {
-                    System.out.println("I/O exception.Sorry!");
                 }
             }
+
+
+
         }
 
 
